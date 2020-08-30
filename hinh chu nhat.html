@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<canvas id="myCanvas" width="400px" height="300px" style="border:1px solid #d3d3d3;"></canvas>
+</body>
+</html>
+<script>
+    let Rectangle = function (width,height) {
+        this.width = width;
+        this.height = height;
+
+        this.setWidth = function (width){
+            this.width = width;
+        }
+        this.setHeight = function (height){
+            this.height = height;
+        }
+
+        this.perimeter = function () {
+            return (this.width + this.height) * 2;
+        }
+        this.acreage = function () {
+            return this.width + this.height;
+        }
+        this.showRectangle = function () {
+            let ctx = document.getElementById("myCanvas").getContext("2d");
+            ctx.moveTo(0, 0);
+            ctx.lineTo(this.width, 0);
+            ctx.lineTo(this.width, this.height);
+            ctx.lineTo(0, this.height)
+            ctx.lineTo(0, 0);
+            ctx.fillStyle = "blue";
+            ctx.fill();
+        }
+    }
+    let rectangle = new Rectangle();
+    let rectWidth = prompt("Enter the width:");
+    rectangle.setWidth(rectWidth);
+    let rectHeight = prompt("Enter the height:");
+    rectangle.setHeight(rectHeight);
+    rectangle.showRectangle();
+    document.write(rectangle.perimeter()+"<br>");
+    document.write(rectangle.acreage());
+
+</script>
